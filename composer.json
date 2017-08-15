@@ -36,8 +36,8 @@
     "zendframework/zend-filter": "*",
     "zendframework/zend-validator": "*",
     "doctrine/doctrine-orm-module": "*",
-    "neilime/zf2-twb-bundle": "~2.4",
-    "zendframework/zendservice-recaptcha": "~2.0.1"
+    "neilime/zf2-twb-bundle": "*",
+    "zendframework/zendservice-recaptcha": "*"
   },
   "require-dev": {
     "satooshi/php-coveralls": "0.6.*",
