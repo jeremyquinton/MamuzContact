@@ -6,12 +6,18 @@ use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 use DoctrineORMModule\Form\Annotation\AnnotationBuilder;
 use MamuzContact\Entity\Contact;
 use Zend\Form\FormInterface;
-use Zend\ServiceManager\FactoryInterface;
+use Interop\Container\ContainerInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorAwareInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
 class CreateFactory implements FactoryInterface
 {
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
+    {
+        return $this->createService($container);
+    }
+
     /**
      * {@inheritdoc}
      * @return FormInterface

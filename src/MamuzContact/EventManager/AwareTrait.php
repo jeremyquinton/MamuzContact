@@ -4,6 +4,7 @@ namespace MamuzContact\EventManager;
 
 use Zend\EventManager\EventManager;
 use Zend\EventManager\EventManagerInterface;
+use Zend\EventManager\SharedEventManager;
 
 trait AwareTrait
 {
@@ -35,7 +36,7 @@ trait AwareTrait
      */
     private function createEventManager()
     {
-        return new EventManager(
+        return new EventManager(new SharedEventManager(),
             array_unique(
                 array(
                     __CLASS__,

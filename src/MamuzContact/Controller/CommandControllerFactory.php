@@ -2,7 +2,8 @@
 
 namespace MamuzContact\Controller;
 
-use Zend\ServiceManager\FactoryInterface;
+use Interop\Container\ContainerInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorAwareInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
@@ -30,5 +31,11 @@ class CommandControllerFactory implements FactoryInterface
         $createForm = $fem->get('MamuzContact\Form\Create');
 
         return new CommandController($commandService, $createForm);
+    }
+
+
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
+    {
+        return $this->createService($container);
     }
 }

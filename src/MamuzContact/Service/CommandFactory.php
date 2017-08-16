@@ -3,7 +3,8 @@
 namespace MamuzContact\Service;
 
 use MamuzContact\Mapper\Db\Command as CommandMapper;
-use Zend\ServiceManager\FactoryInterface;
+use Interop\Container\ContainerInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
 class CommandFactory implements FactoryInterface
@@ -21,5 +22,10 @@ class CommandFactory implements FactoryInterface
         $queryService = new Command($queryMapper);
 
         return $queryService;
+    }
+
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
+    {
+        return $this->createService($container);
     }
 }
